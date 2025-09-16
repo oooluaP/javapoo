@@ -3,12 +3,56 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Biblioteca biblioteca = new Biblioteca();
+
 
         Scanner scanner = new Scanner(System.in);
 
-        // Adicionar itens pelo usuário
-        System.out.print("Quantos itens deseja cadastrar? ");
+        // Identificação
+        System.out.print("Qual seu tipo de perfil? 1 - ADM/2 - Bibliotecario/3 - Usuario Comum");
+        int Opcao = scanner.nextInt();
+
+        switch (Opcao) {
+            case 3:
+                System.out.println("Então voce é Usuario comum.");
+                Usuario usrc = new UsuarioComum("Joao usuario comum");
+                System.out.println(usrc.gerarRelatorio());
+
+
+
+            case 2:
+                System.out.println("Então voce é bibliotecario.");
+                Usuario b1 = new Bibliotecario("Maria bibliotecaria");
+                System.out.println(b1.gerarRelatorio());
+                break;
+
+            case 1:
+                System.out.println("Vocé é ADM. É adm temporario? Digite 1 pra sim e 2 pra não.");
+                int Opcaoadm = scanner.nextInt();
+
+                if (Opcaoadm == 2) {
+                    System.out.println("Então voce é ADM apenas.");
+                    Usuario adm = new Administrador("Jair ADM");
+                    System.out.println(adm.gerarRelatorio());
+
+                }else if (Opcaoadm == 1){
+                    System.out.println("Então voce é ADM temporario apenas.");
+                    Usuario admTemp = new AdministradorTemporario("Luiz ADM temp");
+                    System.out.println(admTemp.gerarRelatorio());
+
+                }
+                break;
+            default:
+                System.out.println("Opção inválida");
+                break;
+        }
+
+
+
+
+        System.out.println("Quantos livros deseja cadastrar?");
+
         int qtd = scanner.nextInt();
         scanner.nextLine(); // limpar buffer
 
@@ -79,5 +123,7 @@ public class Main {
 
         // Listar novamente
         biblioteca.listarItens();
+
+
     }
 }
