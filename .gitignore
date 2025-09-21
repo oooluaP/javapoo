@@ -40,3 +40,20 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+./gradle
+./javapoo/gradle
+./javapoo/.gradle
+./javapoo/src/main/gradle
+./javapoo/src/test/gradle
+./javapoo/src/main/java/gradle
+./javapoo/src/test/java/gradle
+./javapoo/src/main/resources/gradle
+./javapoo/src/test/resources/gradle
+./javapoo/src/main/gradle
+.tmp
+caches
+daemon
+native
+undefined-build
+wrapper

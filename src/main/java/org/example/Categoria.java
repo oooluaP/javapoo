@@ -1,19 +1,23 @@
 package org.example;
 
-public class Categoria {
+/**
+ * Record que representa uma categoria de livro.
+ * Demonstra o uso de records do Java 14+ com validação e formatação.
+ */
+public record Categoria(String descricao) {
+    
+    // Construtor compacto com validação automática
+    public Categoria {
+        if (descricao == null || descricao.trim().isEmpty()) {
+            throw new IllegalArgumentException("Descrição da categoria não pode ser nula ou vazia");
+        }
 
-    private String descricao;
-
-    public Categoria(String descricao) {
-        this.descricao = descricao;
+        descricao = descricao.trim();
     }
+    
 
     public String getDescricao() {
         return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 }
 

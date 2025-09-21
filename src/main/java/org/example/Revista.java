@@ -47,9 +47,15 @@ public class Revista extends Item implements Catalogavel, Emprestavel {
 
     @Override
     public String toString() {
-        return String.format("[Revista] %s (Edição %d, %s) %s",
+        return String.format("[Revista] Titulo: %s (Edição: %d, %s) Status: %s",
                 titulo, edicao, categoria.getDescricao(),
                 emprestado ? "[Emprestada]" : "[Disponível]");
     }
+    @Override
+    public void emprestar(Usuario usuario) {
+        emprestar(); // Chama o método sem usuário, já que não usamos essa informação aqui
+    }
+    public int getEdicao() {
+        return edicao;
+    }
 }
-

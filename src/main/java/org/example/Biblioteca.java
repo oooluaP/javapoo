@@ -29,12 +29,27 @@ public class Biblioteca {
     public void buscarPorTitulo(String titulo) {
         for (Catalogavel i : itens) {
             if (i.getTitulo().equalsIgnoreCase(titulo)) {
-                System.out.println("Encontrado: " + i +" o Status é ");
+                System.out.println("Encontrado: " + i );
                 return;
             }
         }
         System.out.println("Item não encontrado: " + titulo);
     }
 
+    // Novo método para emprestar item
+    public void emprestarItem(String titulo, Usuario usuario) {
+        for (Catalogavel i : itens) {
+            if (i.getTitulo().equalsIgnoreCase(titulo) && i instanceof Emprestavel) {
+                Emprestavel e = (Emprestavel) i;
+                if (!e.isEmprestado()) {
+                    e.emprestar(usuario);
+                } else {
+                    System.out.println("Item já está emprestado!");
+                }
+                return;
+            }
+        }
+        System.out.println("Item não encontrado ou não é emprestável: " + titulo);
+    }
 }
 
